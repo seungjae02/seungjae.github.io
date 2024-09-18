@@ -352,47 +352,103 @@
     <section id="projects" class="section scrollspy">
       <h3 class="page-title white-text teal">Projects</h3>
       <div class="container">
-        <div class="row">
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="study space finder" src="https://www.ketchum.edu/sites/default/files/2022-08/First%20%28Top%29%20Image%20.jpeg" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Studyplace Finder<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  An app that helps you find study spaces around UofT
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> React, HTML, CSS, Bootstrap, Python, Flask</li>
-                  <li>Use the interactive map to see which study spaces are most free.</li>
-
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://galvanic-music.herokuapp.com/" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/seungjae02/music-player"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+        <div class="row" id="projectsrow">
         </div>
+        <button onclick="loadMore()">Load More</button>
       </div>
+      <script>        
+        let loadMoreBool = false
+        const projects = [
+          {
+            img: "https://incubator.ucf.edu/wp-content/uploads/2023/07/artificial-intelligence-new-technology-science-futuristic-abstract-human-brain-ai-technology-cpu-central-processor-unit-chipset-big-data-machine-learning-cyber-mind-domination-generative-ai-scaled-1-1500x1000.jpg",
+            title: "AI Robot",
+            tools: "Python, TensorFlow, C++",
+            desc: "Smart AI robot",
+            date: "10/15/2024"
+          },
+          {
+            img: "https://i.redd.it/djc4b9zeosw21.jpg",
+            title: "ECE212 Lab Project",
+            tools: "Oscillators",
+            desc: "ECE212 course lab project",
+            date: "10/15/2021"
+          },
+          {
+            img: "https://www.ketchum.edu/sites/default/files/2022-08/First%20%28Top%29%20Image%20.jpeg",
+            title: "Studyplace Finder",
+            tools: "eact, HTML, CSS, Bootstrap, Python, Flask",
+            desc: "Find free study spaces",
+            date: "9/15/2022"
+          },
+        ]
+        projects.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        const loadProjects = () => {
+          const projectsDom = []
+          const maxLen = loadMoreBool ? projects.length : 1
+          for (let i = 0; i < maxLen; i++) {
+            const proj = projects[i]
+            projectsDom.push(
+              `<div class="col s12 m6 l4">
+                  <div class="card medium">
+                    <div class="card-image waves-effect waves-block waves-light">
+                      <img alt="study space finder" src=${proj.img} style="height: 100%; width: 100%" class="activator" />
+                    </div>
+                    <div class="card-content">
+                      <span class="card-title activator teal-text hoverline">${proj.title}<i
+                          class="mdi-navigation-more-vert right"></i></span>
+                      <p>
+                        ${proj.desc} - ${proj.date}
+                      </p>
+                    </div>
+                    <div class="card-reveal">
+                      <!-- TODO: change this -- only close button -->
+                      <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
+                      <span class="card-title grey-text"><small>Accomplishments</small><i
+                          class="mdi-navigation-close right"></i></span>
+                      <ul>
+                        <li><b>Tools:</b> ${proj.tools}</li>
+                        <li>${proj.desc}</li>
+
+
+                      </ul>
+                      <div class="card-action">
+                        <a aria-label="Visit " href="https://galvanic-music.herokuapp.com/" target="_blank" data-position="top"
+                          data-tooltip="View Online"
+                          class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                            class="fa fa-external-link"></i></a>
+                        <a aria-label="Visit the GitHub repo for  project" href="https://github.com/seungjae02/music-player"
+                          target="_blank" data-position="top" data-tooltip="View Source"
+                          class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                            class="fa fa-github"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>`
+            )
+          }
+          
+          function createElementFromHTML(htmlString) {
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(htmlString, 'text/html');
+            return doc.body.firstChild; // Returns the first DOM element from the parsed HTML
+          }
+
+          var projectDiv = document.getElementById("projectsrow");
+          for (let domString of projectsDom) {
+            projectDiv.appendChild(createElementFromHTML(domString));
+          }
+        }
+
+        const loadMore = () => {
+          loadMoreBool = true
+          var projectDiv = document.getElementById("projectsrow");
+          projectDiv.textContent = ''
+          loadProjects()
+        }
+
+        loadProjects();
+      </script>
     </section>
 
     <!-- Fifth Section: Skills -->
