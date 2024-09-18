@@ -9,3 +9,7 @@ https://github.com/varadbhogayata/varadbhogayata.github.io
 
 ## Activity 2
 <img width="1680" alt="Screen Shot 2024-09-18 at 12 15 42 PM" src="https://github.com/user-attachments/assets/7d84540a-0180-4d6e-ac8c-08f1beb5b815">
+
+## Activity 3
+<img width="1680" alt="Screen Shot 2024-09-18 at 12 23 49 PM" src="https://github.com/user-attachments/assets/562c7494-0932-42f1-aa46-1475e4340981">
+<img width="1680" alt="Screen Shot 2024-09-18 at 12 23 31 PM" src="https://github.com/user-attachments/assets/bc966321-557e-4942-9b8d-e1734d3f5e88">
