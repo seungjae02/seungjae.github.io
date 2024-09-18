@@ -381,7 +381,7 @@
             date: "9/15/2022"
           },
         ]
-        projects.sort((a, b) => new Date(a.date) - new Date(b.date));
+        projects.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         const loadProjects = () => {
           const projectsDom = []
